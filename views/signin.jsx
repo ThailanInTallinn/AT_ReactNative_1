@@ -9,18 +9,14 @@ import {
   Text,
 } from "react-native";
 
-export default function SignIn() {
+export default function SignIn({ setUserToken }) {
   const [data, setData] = useState({});
 
   const navigation = useNavigation();
 
-  const handleInputChange = (field, value, setData) => {
-    setData((current) => ({ ...current, [field]: value }));
-  };
-
   const login = () => {
     if (data.email && data.password) {
-      navigation.navigate("Home");
+      setUserToken(true);
     }
   };
 
@@ -32,7 +28,7 @@ export default function SignIn() {
         style={styles.userInput}
         value={data?.email}
         onChangeText={(text) => {
-          handleInputChange("email", text, setData);
+          setData((data) => ({ ...data, email: text }));
         }}
       />
       <TextInput
@@ -41,10 +37,15 @@ export default function SignIn() {
         style={styles.userInput}
         value={data?.password}
         onChangeText={(text) => {
-          handleInputChange("password", text, setData);
+          setData((data) => ({ ...data, password: text }));
         }}
       />
-      <Pressable style={styles.button}>
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          login();
+        }}
+      >
         <Text style={styles.buttonText}>Entrar</Text>
       </Pressable>
     </View>

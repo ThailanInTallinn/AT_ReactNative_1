@@ -15,11 +15,15 @@ export default function App() {
         {userToken ? (
           <Stack.Screen name="Home" component={Home} />
         ) : (
-          <Stack.Screen
-            name="SignIn"
-            component={SignIn}
-            options={{ headerShown: true }}
-          />
+          <Stack.Screen name="SignIn">
+            {() => (
+              <SignIn
+                component={SignIn}
+                options={{ headerShown: true }}
+                setUserToken={setUserToken}
+              />
+            )}
+          </Stack.Screen>
         )}
       </Stack.Navigator>
     </NavigationContainer>
