@@ -1,8 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
+import SignIn from "./views/signin";
+import Home from "./views/home";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -12,9 +13,13 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {userToken ? (
-          <Stack.Screen name="Home" />
+          <Stack.Screen name="Home" component={Home} />
         ) : (
-          <Stack.Screen name="SignIn" />
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ headerShown: true }}
+          />
         )}
       </Stack.Navigator>
     </NavigationContainer>
