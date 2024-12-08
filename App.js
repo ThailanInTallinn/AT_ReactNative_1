@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
 import SignIn from "./views/signin";
-import Home from "./views/home";
+import TransacaoListScreen from "./views/transacaoListScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -13,7 +13,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {userToken ? (
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Home"
+            component={TransacaoListScreen}
+            options={{ headerShown: false }}
+          />
         ) : (
           <Stack.Screen name="SignIn">
             {() => (
