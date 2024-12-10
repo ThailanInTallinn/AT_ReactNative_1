@@ -3,7 +3,7 @@
     "name": "AT_ReactNative_1",
     "slug": "AT_ReactNative_1",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
